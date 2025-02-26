@@ -15,9 +15,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: '384M'
-        reservations:
           memory: '256M'
+        reservations:
+          memory: '192M'
 networks:
   ttc-tops:
     external: true
