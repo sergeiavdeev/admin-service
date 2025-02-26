@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  admin-service:
+    build: .
+    image: sergeiavdeev/admin-service:${TAG}
+    container_name: admin-service
+    command: java -jar admin-service-0.0.1-SNAPSHOT.jar
+    restart: always
+    environment:
+      spring.profiles.active: ${PROFILE}
+    ports:
+      - "8085:8085"
+    networks:
+      - ttc-tops
+    deploy:
+      resources:
+        limits:
+          memory: '384M'
+        reservations:
+          memory: '256M'
+networks:
+  ttc-tops:
+    external: true
+    name: ttc-tops
+    driver: bridge
+
+
